@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sysroot.entity.Contract;
 import sysroot.entity.User;
-import sysroot.mybatis.UserMapper;
+import sysroot.mybatis.SimpleMapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -28,13 +31,17 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserMapper userMapper;
-
+    SimpleMapper simpleMapper;
 
     @RequestMapping(value="", method= RequestMethod.GET)
-    public User getUser() {
-        User user=userMapper.findUserByNameByAnnotation("11");
-        return user;
+    public Object getContract() {
+        List object=new ArrayList();
+        object.add(simpleMapper.findContractById("1"));
+        object.add(simpleMapper.findHouseById("1"));
+        object.add(simpleMapper.findStateById("1"));
+        object.add(simpleMapper.findSysRoleById("1"));
+        object.add(simpleMapper.findUserById("1"));
+        return object;
     }
 
 }

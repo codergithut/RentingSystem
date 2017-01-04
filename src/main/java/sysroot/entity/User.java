@@ -7,12 +7,16 @@ import javax.persistence.*;
  * 个人建议添加个默认构造方法和带全参数的构造方法可以方便jdbc封装
  */
 @Entity
-@Table(name="users")
+@Table(name="info_user")
 public class User {
     private Long id ;
     private String name;
-    private String password ;
-    private long group_id;
+    private String sex ;
+    private String num_credential;
+    private String role;
+    private String type_credential;
+    private Long contract_id;
+    private Long house_id;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,30 +28,59 @@ public class User {
         this.id = id;
     }
 
-    @Column(name="group_id")
-    public Long getGroup_id() {return group_id;}
-    public void setGroup_id(long group_id) {this.group_id = group_id;}
-
-    @Column(name="name")
     public String getName() {
         return name;
     }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getNum_credential() {
+        return num_credential;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getType_credential() {
+        return type_credential;
+    }
+
+    public Long getContract_id() {
+        return contract_id;
+    }
+
+    public Long getHouse_id() {
+        return house_id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    @Column(name="password")
-    public String getPassword() {return password;}
-    public void setPassword(String password) {this.password = password;}
-
-    public User(Long id,String name,String password){
-        this.id=id;
-        this.name=name;
-        this.password=password;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public User(){
-        
+    public void setNum_credential(String num_credential) {
+        this.num_credential = num_credential;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setType_credential(String type_credential) {
+        this.type_credential = type_credential;
+    }
+
+    public void setContract_id(Long contract_id) {
+        this.contract_id = contract_id;
+    }
+
+    public void setHouse_id(Long house_id) {
+        this.house_id = house_id;
+    }
 }
