@@ -1,17 +1,16 @@
 package sysroot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import sysroot.entity.Contract;
-import sysroot.entity.User;
 import sysroot.mybatis.SimpleMapper;
+import sysroot.service.ContractService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -27,21 +26,28 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping(value="/contract")
-public class UserController {
+@RequestMapping(value="/account")
+public class ContractController {
 
     @Autowired
-    SimpleMapper simpleMapper;
+    ContractService contractService;
+
+    //根据催租人的编号获取合同信息列表妈蛋收租人都是职业化的了
+    @RequestMapping(value="", method= RequestMethod.GET)
+    public List<Contract> getContractList(@PathVariable String id) {
+        List<Contract> contract=contractService.getContractList(id);
+        return contract;
+    }
 
     @RequestMapping(value="", method= RequestMethod.GET)
-    public Object getContract() {
-        List object=new ArrayList();
-        object.add(simpleMapper.findContractById("1"));
-        object.add(simpleMapper.findHouseById("1"));
-        object.add(simpleMapper.findStateById("1"));
-        object.add(simpleMapper.findSysRoleById("1"));
-        object.add(simpleMapper.findUserById("1"));
-        return object;
+    public boolean editorContract(String id,Contract contract) {
+        boolean changeResult=contractService.editorContract(id,contract);
+        return changeResult;
     }
+
+
+
+
+
 
 }

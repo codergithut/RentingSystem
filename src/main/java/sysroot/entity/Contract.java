@@ -19,9 +19,13 @@ public class Contract {
     private String end_time;
     private float pledge_pay;
     private float before_pay;
-    private int rental_type;
+    private String rental_type;
     private String rental_get;
     private String rental_space;
+    private String isdirty;
+    private Long rental_id;
+    private Long rental_get_id;
+    private Long remain_money;
 
 
     @Id
@@ -70,7 +74,12 @@ public class Contract {
         return before_pay;
     }
 
-    public int getRental_type() {
+    public void setRental_type(String rental_type) {
+        this.rental_type = rental_type;
+    }
+
+    public String getRental_type() {
+
         return rental_type;
     }
 
@@ -118,9 +127,6 @@ public class Contract {
         this.before_pay = before_pay;
     }
 
-    public void setRental_type(int rental_type) {
-        this.rental_type = rental_type;
-    }
 
     public void setRental_get(String rental_get) {
         this.rental_get = rental_get;
@@ -128,5 +134,38 @@ public class Contract {
 
     public void setRental_space(String rental_space) {
         this.rental_space = rental_space;
+    }
+
+    public String getIsdirty() {
+        return isdirty;
+    }
+
+    public Long getRental_id() {
+        return rental_id;
+    }
+
+    public Long getRental_get_id() {
+        return rental_get_id;
+    }
+
+
+    public void setIsdirty(String isdirty) {
+        this.isdirty = isdirty;
+    }
+
+    public void setRental_id(Long rental_id) {
+        this.rental_id = rental_id;
+    }
+
+    public void setRental_get_id(Long rental_get_id) {
+        this.rental_get_id = rental_get_id;
+    }
+
+    public Long getRemain_money() {
+        return remain_money;
+    }
+
+    public void setRemain_money(Long remain_money) {
+        this.remain_money = remain_money;
     }
 }
